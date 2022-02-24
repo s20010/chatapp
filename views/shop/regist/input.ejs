@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>登録</title>
+    <style>
+        .alert {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+    </style>
+</head>
+<body>
+<h1>登録</h1>
+<% if (locals.errors) { %>
+    <ul class="alert">
+        <%   for (var i = 0; i < errors.length; i++) { %>
+            <li><%= errors[i]%></li>
+        <%   } %>
+    </ul>
+<% } %>
+<form method="POST" action="/shop/regist/confirm">
+    <div>
+        <label for="name">会社名：</label>
+        <input type="text" id="name" name="name" value="<%= locals.name ? name : ""%>"/>
+    </div>
+    <div>
+        <label for="location">所在地：</label>
+        <input type="text" id="location" name="location" value="<%= locals.location ? location : ""%>"/>
+    </div>
+    <div>
+        <label for="tel">電話：</label>
+        <input type="text" id="tel" name="tel" value="<%= locals.tel ? tel : ""%>" />
+    </div>
+    <div>
+        <input type="submit" value="確認" />
+    </div>
+</form>
+<script type="text/javascript" src="/public/third_party/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="/public/scripts/shop/regist/protect-double-submit.js"></script>
+</body>
+</html>
